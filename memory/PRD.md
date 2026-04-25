@@ -53,3 +53,10 @@ A premium 48-hour offline experience brand for high-performing individuals. Tagl
 1. Provide Razorpay test keys → enable real reservations
 2. Hook applications + selection → automated email flow
 3. Build "Bookings" admin tab (list + status)
+
+## Session Notes (2026-04-25)
+- User confirmed scope: **(b) Email flow** + **(d) Polish all areas** (hero, concept, pricing, application form UX, admin dashboard).
+- Email scope: ALL emails — application received, accepted/rejected, payment receipt + experience details.
+- Pending decisions before implementation: (1) email provider (Resend vs SendGrid), (2) sender identity (sandbox vs custom domain), (3) RESEND_API_KEY / SENDGRID_API_KEY.
+- User asked to **pause** and create a backup file; further instructions will come on the next run.
+- Backup snapshot: `/app/backups/ofline_co_backup_20260425_104401.tar.gz` (backend + frontend + memory + design_guidelines + test_reports, excludes node_modules/.git).
