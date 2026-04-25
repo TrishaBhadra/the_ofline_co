@@ -24,17 +24,19 @@ class TestExperiences:
         items = r.json()
         assert isinstance(items, list)
         slugs = [i["slug"] for i in items]
-        assert "first-light-himalayas" in slugs
-        assert "long-table-coast" in slugs
+        assert "shantiniketan-mati" in slugs
+        assert "dooars-wood-smoke" in slugs
+        assert "daringbadi-pine-smoke" in slugs
+        assert "satkosia-river-hours" in slugs
         # verify no _id leakage
         for i in items:
             assert "_id" not in i
 
     def test_get_experience_by_slug(self, api_client):
-        r = api_client.get(f"{BASE_URL}/api/experiences/first-light-himalayas", timeout=20)
+        r = api_client.get(f"{BASE_URL}/api/experiences/shantiniketan-mati", timeout=20)
         assert r.status_code == 200
         item = r.json()
-        assert item["slug"] == "first-light-himalayas"
+        assert item["slug"] == "shantiniketan-mati"
         assert isinstance(item.get("chapters"), list)
         assert len(item["chapters"]) > 0
         assert "_id" not in item

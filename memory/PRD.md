@@ -60,3 +60,16 @@ A premium 48-hour offline experience brand for high-performing individuals. Tagl
 - Pending decisions before implementation: (1) email provider (Resend vs SendGrid), (2) sender identity (sandbox vs custom domain), (3) RESEND_API_KEY / SENDGRID_API_KEY.
 - User asked to **pause** and create a backup file; further instructions will come on the next run.
 - Backup snapshot: `/app/backups/ofline_co_backup_20260425_104401.tar.gz` (backend + frontend + memory + design_guidelines + test_reports, excludes node_modules/.git).
+
+## Brand Re-rooting (2026-04-25)
+- The Ofline Co. is now explicitly based in **Bengal × Odisha** (footer + hero overline updated).
+- Seeded 4 offbeat experiences (replaces the 2 generic Himalaya/Konkan ones):
+  1. `shantiniketan-mati` — Mati — Birbhum, West Bengal — ₹13k
+  2. `dooars-wood-smoke` — Wood Smoke — Jalpaiguri/Gorumara, North Bengal — ₹16k
+  3. `daringbadi-pine-smoke` — Pine Smoke — Kandhamal, Odisha — ₹15k
+  4. `satkosia-river-hours` — River Hours — Angul/Mahanadi, Odisha — ₹17k
+- Added new landing section "**04 — Where we go**" listing the four regions; downstream overlines renumbered (testimonials→05, differentiation→06, how-it-works→07, pricing→08).
+- Pricing inclusion bullet localised to "Baul song, dokra craft, or river cooking".
+- Backend startup now runs a one-time delete of old slugs (`first-light-himalayas`, `long-table-coast`) and idempotent insert of new ones (preserves admin edits).
+- Backend regression tests updated to assert the four new slugs.
+- Latest backup: `/app/backups/ofline_co_backup_20260425_162749.tar.gz`

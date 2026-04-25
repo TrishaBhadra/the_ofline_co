@@ -262,7 +262,7 @@ function ExperiencesPanel() {
             <DialogTitle className="font-serif text-2xl">{editId ? "Edit experience" : "New experience"}</DialogTitle>
           </DialogHeader>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-            <Field label="Slug"><Input data-testid="exp-slug" value={form.slug} onChange={(e) => setForm({ ...form, slug: e.target.value })} className="rounded-none bg-ink border-paper/15 text-paper" placeholder="first-light-himalayas" /></Field>
+            <Field label="Slug"><Input data-testid="exp-slug" value={form.slug} onChange={(e) => setForm({ ...form, slug: e.target.value })} className="rounded-none bg-ink border-paper/15 text-paper" placeholder="shantiniketan-mati" /></Field>
             <Field label="Title"><Input data-testid="exp-title" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} className="rounded-none bg-ink border-paper/15 text-paper" /></Field>
             <Field label="Region hint" full><Input value={form.region_hint} onChange={(e) => setForm({ ...form, region_hint: e.target.value })} className="rounded-none bg-ink border-paper/15 text-paper" /></Field>
             <Field label="Cover image URL" full><Input value={form.cover_image} onChange={(e) => setForm({ ...form, cover_image: e.target.value })} className="rounded-none bg-ink border-paper/15 text-paper" /></Field>

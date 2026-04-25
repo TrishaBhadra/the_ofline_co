@@ -62,7 +62,7 @@ export default function Landing() {
           <Reveal>
             <p className="overline mb-6" data-testid="hero-overline">
               <span className="inline-block w-8 h-px bg-ember align-middle mr-3" />
-              A 48-hour offline experience
+              48 hours offline · Bengal & Odisha
             </p>
           </Reveal>
           <Reveal delay={0.15}>
@@ -76,7 +76,7 @@ export default function Landing() {
           </Reveal>
           <Reveal delay={0.3}>
             <p className="mt-8 max-w-xl text-lg md:text-xl text-paper/80 leading-relaxed">
-              A weekend where strangers become real, and life feels like it used to.
+              A weekend in the red-earth villages of Bengal and the quiet hills of Odisha — where strangers become real, and life feels like it used to.
               No screens. No feeds. No performance.
             </p>
           </Reveal>
@@ -216,6 +216,55 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* WHERE WE GO — Bengal × Odisha */}
+      <section id="where" className="relative py-32 md:py-44 border-t border-paper/10" data-testid="where-section">
+        <div className="container-page">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-16">
+            <div className="md:col-span-4">
+              <p className="overline">04 — Where we go</p>
+            </div>
+            <div className="md:col-span-8">
+              <Reveal>
+                <h2 className="font-serif text-4xl md:text-6xl leading-[1.05] kerned text-balance">
+                  Two states. Four villages. <span className="italic text-paper/80">Zero signal.</span>
+                </h2>
+              </Reveal>
+              <Reveal delay={0.15}>
+                <p className="mt-8 text-paper/65 max-w-2xl text-lg leading-relaxed">
+                  We work only in places we've walked ourselves — partnered with the families, the singers, the boatmen, the potters who already live the unhurried life. No resorts. No staged authenticity.
+                </p>
+              </Reveal>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-2 border-t border-paper/10">
+            {[
+              { region: "Birbhum, West Bengal", place: "Shantiniketan & the Khoai", note: "Red earth, Baul singers, mud-floor suppers." },
+              { region: "Jalpaiguri, North Bengal", place: "The Dooars, near Gorumara", note: "Sal forests, tea-garden silence, Lepcha kitchens." },
+              { region: "Kandhamal, Odisha", place: "Daringbadi pine country", note: "Pine smoke, coffee estates, Kondh folk song." },
+              { region: "Angul, Odisha", place: "Satkosia gorge, Mahanadi", note: "Dugout boats, gorge shadows, stars without lamps." },
+            ].map((row, i) => (
+              <Reveal key={row.place} delay={i * 0.06}>
+                <div className="flex items-baseline gap-6 md:gap-8 border-b border-paper/10 py-7 md:py-8">
+                  <span className="num-display text-ember text-sm pt-1 w-10 shrink-0">/0{i + 1}</span>
+                  <div className="flex-1">
+                    <p className="overline text-paper/50">{row.region}</p>
+                    <h3 className="font-serif text-2xl md:text-3xl mt-2 text-paper text-balance">{row.place}</h3>
+                    <p className="mt-2 text-paper/60 text-sm md:text-base leading-relaxed">{row.note}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={0.2}>
+            <p className="mt-10 text-xs tracking-[0.28em] uppercase text-paper/40 max-w-xl leading-relaxed">
+              Specific villages and addresses are sealed until 24 hours before your weekend begins. The waiting is part of the weekend.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
       {/* COUNTDOWN */}
       <section className="relative py-24 md:py-32 border-y border-paper/10" data-testid="countdown-section">
         <div
@@ -248,7 +297,7 @@ export default function Landing() {
       <section className="relative py-32 md:py-48" data-testid="testimonials-section">
         <div className="container-page max-w-4xl text-center">
           <Reveal>
-            <p className="overline mb-10">04 — What people leave with</p>
+            <p className="overline mb-10">05 — What people leave with</p>
           </Reveal>
           <div className="space-y-20 md:space-y-28">
             {(testimonials.length ? testimonials : [
@@ -271,7 +320,7 @@ export default function Landing() {
       <section className="relative py-32 md:py-44 border-t border-paper/10" data-testid="differentiation-section">
         <div className="container-page grid grid-cols-1 md:grid-cols-12 gap-10">
           <div className="md:col-span-5">
-            <p className="overline">05 — What this isn't</p>
+            <p className="overline">06 — What this isn't</p>
             <h2 className="font-serif text-4xl md:text-6xl mt-4 leading-[1.05] kerned text-balance">
               This is not a retreat.
             </h2>
@@ -303,7 +352,7 @@ export default function Landing() {
         <div className="container-page">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-16">
             <div className="md:col-span-4">
-              <p className="overline">06 — The arc</p>
+              <p className="overline">07 — The arc</p>
             </div>
             <div className="md:col-span-8">
               <h2 className="font-serif text-4xl md:text-6xl leading-[1.05] kerned text-balance">
@@ -335,7 +384,7 @@ export default function Landing() {
       <section id="pricing" className="relative py-32 md:py-44 border-t border-paper/10" data-testid="pricing-section">
         <div className="container-page grid grid-cols-1 md:grid-cols-12 gap-10">
           <div className="md:col-span-5">
-            <p className="overline">07 — Pricing</p>
+            <p className="overline">08 — Pricing</p>
             <h2 className="font-serif text-4xl md:text-6xl mt-4 leading-[1.05] kerned text-balance">
               Premium by design — because intention matters.
             </h2>
@@ -359,7 +408,7 @@ export default function Landing() {
                   "All accommodation, food, and travel within the experience",
                   "A button phone for 48 hours (yours to keep)",
                   "Hand-written letter from a fellow participant",
-                  "Locally-led workshop — pottery, foraging, or fire-cooking",
+                  "Locally-led workshop — Baul song, dokra craft, or river cooking",
                 ].map((x, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <span className="num-display text-ember text-sm pt-1">+</span>

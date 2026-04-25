@@ -445,53 +445,94 @@ async def startup():
             "seats_remaining": 12,
         })
 
-    # Seed sample experiences
-    if await db.experiences.count_documents({}) == 0:
-        samples = [
-            {
-                "id": str(uuid.uuid4()),
-                "slug": "first-light-himalayas",
-                "title": "First Light",
-                "region_hint": "Somewhere in the lower Himalayas",
-                "cover_image": "https://static.prod-images.emergentagent.com/jobs/8233dccd-e10a-45ac-93c0-5e1ff12eeb81/images/a442b8b5c46dd5c0aba75a7f85fe0c41e8bcc4d39a1b435c00a324223d2b7479.png",
-                "duration": "48 hours",
-                "cohort_size": 12,
-                "price_inr": 14000,
-                "summary": "Two days of mountain light, slow food, and longer conversations than you've had in years.",
-                "chapters": [
-                    "Arrival & phone exchange ritual",
-                    "Cooking with a local family",
-                    "Forest walk before dawn",
-                    "Stories around the fire",
-                    "Letter to your future self",
-                ],
-                "starts_at": (datetime.now(timezone.utc) + timedelta(days=30)).isoformat(),
-                "published": True,
-                "created_at": datetime.now(timezone.utc).isoformat(),
-            },
-            {
-                "id": str(uuid.uuid4()),
-                "slug": "long-table-coast",
-                "title": "Long Table",
-                "region_hint": "An undisclosed stretch of the Konkan coast",
-                "cover_image": "https://static.prod-images.emergentagent.com/jobs/8233dccd-e10a-45ac-93c0-5e1ff12eeb81/images/ad52708b4197fa2c641d5ec311ef1555a5b05fc0692a51bf181899fb1e1927ba.png",
-                "duration": "48 hours",
-                "cohort_size": 14,
-                "price_inr": 16000,
-                "summary": "Twelve strangers. One long table. The sea. No notifications.",
-                "chapters": [
-                    "Phone swap at meetpoint",
-                    "Catch-of-the-day with fishermen",
-                    "Sunset philosophy circle",
-                    "Music without speakers",
-                    "Goodbye without DMs",
-                ],
-                "starts_at": (datetime.now(timezone.utc) + timedelta(days=55)).isoformat(),
-                "published": True,
-                "created_at": datetime.now(timezone.utc).isoformat(),
-            },
-        ]
-        await db.experiences.insert_many([dict(s) for s in samples])
+    # One-time cleanup: remove legacy seed experiences from earlier brand direction
+    await db.experiences.delete_many({"slug": {"$in": ["first-light-himalayas", "long-table-coast"]}})
+
+    # Seed sample experiences (Bengal & Odisha — offbeat, rooted)
+    samples = [
+        {
+            "slug": "shantiniketan-mati",
+            "title": "Mati",
+            "region_hint": "A red-earth village near Shantiniketan, Birbhum",
+            "cover_image": "https://static.prod-images.emergentagent.com/jobs/8233dccd-e10a-45ac-93c0-5e1ff12eeb81/images/ad52708b4197fa2c641d5ec311ef1555a5b05fc0692a51bf181899fb1e1927ba.png",
+            "duration": "48 hours",
+            "cohort_size": 12,
+            "price_inr": 13000,
+            "summary": "Two days in Tagore's red-earth country — Baul singers, mud-floor dinners, and the slow walk along the Khoai.",
+            "chapters": [
+                "Phone exchange at Bolpur station",
+                "Khoai walk at dusk with a Baul",
+                "Dinner with a Santhal family, mud floor and clay plates",
+                "Sonajhuri haat at sunrise — no photos",
+                "Letter beside the Kopai river",
+            ],
+            "starts_at": (datetime.now(timezone.utc) + timedelta(days=22)).isoformat(),
+            "published": True,
+        },
+        {
+            "slug": "dooars-wood-smoke",
+            "title": "Wood Smoke",
+            "region_hint": "Deep in a Dooars forest village near Gorumara, North Bengal",
+            "cover_image": "https://static.prod-images.emergentagent.com/jobs/8233dccd-e10a-45ac-93c0-5e1ff12eeb81/images/a442b8b5c46dd5c0aba75a7f85fe0c41e8bcc4d39a1b435c00a324223d2b7479.png",
+            "duration": "48 hours",
+            "cohort_size": 12,
+            "price_inr": 16000,
+            "summary": "A weekend inside the Dooars — sal forests, tea-garden silence, and supper with a Lepcha family near Gorumara.",
+            "chapters": [
+                "Phone swap at the forest checkpoint",
+                "Pre-dawn walk along the Murti river",
+                "Tea-garden lunch with the pluckers",
+                "Stories under sal trees, hurricane lamps only",
+                "Slow farewell over wood smoke and rice beer",
+            ],
+            "starts_at": (datetime.now(timezone.utc) + timedelta(days=42)).isoformat(),
+            "published": True,
+        },
+        {
+            "slug": "daringbadi-pine-smoke",
+            "title": "Pine Smoke",
+            "region_hint": "A pine-and-coffee hamlet in Kandhamal, Odisha — locals call it the Kashmir of Odisha",
+            "cover_image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1600&q=80",
+            "duration": "48 hours",
+            "cohort_size": 12,
+            "price_inr": 15000,
+            "summary": "Forty-eight hours in Daringbadi — pine woods, coffee estates, and Kondh tribal song around a single fire.",
+            "chapters": [
+                "Phone surrender at the coffee estate",
+                "Hilltop lunch with a Kondh family",
+                "Silent walk through the pine forest",
+                "Bonfire and folk song at Lover's Point",
+                "Letter at the Doluri river",
+            ],
+            "starts_at": (datetime.now(timezone.utc) + timedelta(days=58)).isoformat(),
+            "published": True,
+        },
+        {
+            "slug": "satkosia-river-hours",
+            "title": "River Hours",
+            "region_hint": "A riverside camp in the Satkosia gorge on the Mahanadi, Odisha",
+            "cover_image": "https://images.pexels.com/photos/36729452/pexels-photo-36729452.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1400",
+            "duration": "48 hours",
+            "cohort_size": 12,
+            "price_inr": 17000,
+            "summary": "The Mahanadi cuts through forested hills here. No road noise, no signal — only the river, a dugout boat, and stars without LEDs.",
+            "chapters": [
+                "Phone swap at the ghat",
+                "Dugout boat into the gorge at first light",
+                "Cooking with the boatmen's family",
+                "Stargazing without a single lamp",
+                "Slow farewell on the water",
+            ],
+            "starts_at": (datetime.now(timezone.utc) + timedelta(days=78)).isoformat(),
+            "published": True,
+        },
+    ]
+    for s in samples:
+        if not await db.experiences.find_one({"slug": s["slug"]}):
+            doc = dict(s)
+            doc["id"] = str(uuid.uuid4())
+            doc["created_at"] = datetime.now(timezone.utc).isoformat()
+            await db.experiences.insert_one(doc)
 
     # Seed testimonials
     if await db.testimonials.count_documents({}) == 0:
