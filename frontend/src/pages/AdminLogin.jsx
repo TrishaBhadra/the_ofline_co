@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import { toast } from "sonner";
@@ -11,7 +11,9 @@ export default function AdminLogin() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  if (admin) { setTimeout(() => nav("/admin", { replace: true }), 0); }
+  useEffect(() => {
+    if (admin) nav("/admin", { replace: true });
+  }, [admin, nav]);
 
   const onSubmit = async (e) => {
     e.preventDefault();

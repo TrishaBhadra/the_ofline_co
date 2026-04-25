@@ -339,11 +339,8 @@ async def create_razorpay_order(payload: RazorpayOrderRequest):
         "created_at": datetime.now(timezone.utc).isoformat(),
     }
 
-    if not key_id or not key_secret:
-        # No keys configured — return clear signal so frontend can show maintenance state
-        booking["razorpay_order_id"] = None
-        booking["status"] = "unconfigured"
-        await db.bookings.insert_one(dict(booking))
+    if (not key_id) or (not key_secret):
+        # No keys configured — fail fast with a clear message; don't persist orphan bookings
         raise HTTPException(
             status_code=503,
             detail="Payments are temporarily unavailable. Please apply via the application form — we'll reach out personally.",
