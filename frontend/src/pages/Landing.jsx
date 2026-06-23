@@ -191,7 +191,8 @@ export default function Landing() {
                 <p className="overline mb-6">Upcoming editions</p>
               </Reveal>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {experiences.slice(0, 4).map((e) => (
+                {Array.isArray(experiences) &&
+  experiences.slice(0, 4).map((e) => (
                   <Link
                     key={e.id || e.slug}
                     to={`/experiences/${e.slug}`}
