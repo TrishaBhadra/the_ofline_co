@@ -26,6 +26,7 @@ export default function Landing() {
           api.get("/experiences"),
           api.get("/testimonials"),
         ]);
+        console.log("EXPERIENCES API:", e.data);
         setCountdown(c.data);
         setExperiences(e.data || []);
         setTestimonials(t.data || []);
