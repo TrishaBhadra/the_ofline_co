@@ -211,6 +211,7 @@ export default function Landing() {
                     </div>
                   </Link>
                 ))}
+                }
               </div>
             </div>
           )}
